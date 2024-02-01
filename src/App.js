@@ -15,7 +15,7 @@ function App() {
 //2. state hold newtodo if you want to add something to alltodo
 
 const [singleTodo, setSingleTodo] = useState('')
-const [allTodo, setAllTodo] = useState()
+const [allTodo, setAllTodo] = useState([{id: 123, text: 'food'}])
 
 // const handleTextBox =(e)=>{
 // setSingleTodo(e.target.value)
@@ -23,7 +23,8 @@ const [allTodo, setAllTodo] = useState()
 // }
 
 const submitFunc =()=>{
-  setAllTodo(singleTodo)
+  setAllTodo([...allTodo,{id:Math.random(), text: singleTodo}])
+  setSingleTodo('')
 }
   return (
     <div className="App">
@@ -31,7 +32,16 @@ const submitFunc =()=>{
 <input type='text' value={singleTodo} placeholder='Your New Task' onChange={(e)=>setSingleTodo(e.target.value)} />
 <button onClick={submitFunc}>Submit</button>
 </div>
-<div sx={{backgroundColor: "green"}}>{allTodo}</div>
+<div sx={{backgroundColor: "green"}}>
+  {allTodo.map((val)=>
+
+      <div key={val.id}>
+
+<p>{val.text}</p>
+</div>
+ 
+  )}
+  </div>
     </div>
   );
 }

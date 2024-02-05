@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import './App.css';
+import Array from './Component/Array';
 
 function App() {
 //2 components
@@ -42,6 +43,8 @@ const submitFunc =()=>{
  
   )}
   </div>
+
+  <Array/>
     </div>
   );
 }

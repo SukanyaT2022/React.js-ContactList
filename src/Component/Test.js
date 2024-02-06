@@ -1,41 +1,37 @@
 import React, { useState } from 'react'
 
 const Test = () => {
-  const [singleToDo, setSingleToDo] = useState('')
-  const [allToDo, setAllToDo] = useState([])
-const setSingleToDoFunc =(e)=>{
-setSingleToDo(e.target.value)
+  const [singletodo, setSingletodo] = useState('')
+  const [all2do, setAll2do] = useState([])
 
-// console.log(singleToDo)
+const singletodoFunc =(e)=>{
+  setSingletodo(e.target.value)
+  console.log(singletodo)
 }
-//move singletodo to all tod0
-const submitFunc =()=>{
-  setAllToDo([...allToDo, {id: Math.random(), text: singleToDo}])
-  setSingleToDo('')
-}
-const deleteFunc =(id)=>{
-  //if id not match we keep them in side filterToDo -- if id match---take it out
-const filterToDo = allToDo.filter((val)=>val.id !== id)
-setAllToDo(filterToDo)
+const submitAlltodoFunc=()=>{
+ setAll2do([...all2do,{id:Math.random(), text:singletodo}])
 }
 
-return(
-<>
-<input type='text' value={singleToDo} onChange={setSingleToDoFunc}/>
-<button onClick={submitFunc}>Submit</button>
+  return(
+    <>
+<div>
+<input type='text' value = {singletodo}  onChange={singletodoFunc} />
+<button onClick={submitAlltodoFunc}>Submit</button>
+</div>
+
 
 {
-  allToDo.map((val)=>(
-    <div key={val.id}>
-    <p>{val.id}</p>
-    <p>{val.text}</p>
-    <button onClick={()=>deleteFunc(val.id)}>Delete</button>
-    </div>
+  all2do.map((val)=>(
+<div key={val.id}>
+<p>{val.id}</p>
+<p>{val.text}</p>
+</div>
   ))
 }
-</>
-)
 
+</>
+
+  )
 }
 
 export default Test
@@ -66,4 +62,44 @@ export default Test
 // </div>
 //   </div>
 
+// )
+
+
+
+
+
+// with delete
+// const [singleToDo, setSingleToDo] = useState('')
+//   const [allToDo, setAllToDo] = useState([])
+// const setSingleToDoFunc =(e)=>{
+// setSingleToDo(e.target.value)
+
+
+// }
+// //move singletodo to all tod0
+// const submitFunc =()=>{
+//   setAllToDo([...allToDo, {id: Math.random(), text: singleToDo}])
+//   setSingleToDo('')
+// }
+// const deleteFunc =(id)=>{
+//   //if id not match we keep them in side filterToDo -- if id match---take it out
+// const filterToDo = allToDo.filter((val)=>val.id !== id)
+// setAllToDo(filterToDo)
+// }
+
+// return(
+// <>
+// <input type='text' value={singleToDo} onChange={setSingleToDoFunc}/>
+// <button onClick={submitFunc}>Submit</button>
+
+// {
+//   allToDo.map((val)=>(
+//     <div key={val.id}>
+//     <p>{val.id}</p>
+//     <p>{val.text}</p>
+//     <button onClick={()=>deleteFunc(val.id)}>Delete</button>
+//     </div>
+//   ))
+// }
+// </>
 // )

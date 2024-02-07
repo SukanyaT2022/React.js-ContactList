@@ -10,7 +10,14 @@ const singletodoFunc =(e)=>{
 }
 const submitAlltodoFunc=()=>{
  setAll2do([...all2do,{id:Math.random(), text:singletodo}])
+setSingletodo('')
 }
+const deleteFunc=(id)=>{
+  const filterStore = all2do.filter((val)=>val.id !== id)
+  // const filterToDo = allToDo.filter((val)=>val.id !== id)
+  setAll2do(filterStore)
+}
+
 
   return(
     <>
@@ -25,9 +32,12 @@ const submitAlltodoFunc=()=>{
 <div key={val.id}>
 <p>{val.id}</p>
 <p>{val.text}</p>
+<button onClick={()=>deleteFunc(val.id)}>Delete</button>
 </div>
   ))
 }
+
+
 
 </>
 

@@ -4,44 +4,40 @@ const Test = () => {
   const [singletodo, setSingletodo] = useState('')
   const [all2do, setAll2do] = useState([])
 
-const singletodoFunc =(e)=>{
-  setSingletodo(e.target.value)
-  console.log(singletodo)
-}
-const submitAlltodoFunc=()=>{
- setAll2do([...all2do,{id:Math.random(), text:singletodo}])
-setSingletodo('')
-}
-const deleteFunc=(id)=>{
-  const filterStore = all2do.filter((val)=>val.id !== id)
-  // const filterToDo = allToDo.filter((val)=>val.id !== id)
-  setAll2do(filterStore)
-}
+  const singletodoFunc =(e)=>{
+    setSingletodo(e.target.value)
 
-
+  }
+  const submitAlltodoFunc =()=>{
+    setAll2do([...all2do,{id:Math.random(), text: singletodo}])
+    setSingletodo('')
+  }
+  const deleteFunc =(id)=>{
+const storefilter = all2do.filter((val)=>val.id!==id)
+setAll2do(storefilter)
+  }
   return(
     <>
 <div>
-<input type='text' value = {singletodo}  onChange={singletodoFunc} />
+{/* <input type='text' value={singletodo} onChange={(e)=>setSingletodo(e.target.value)}/> */}
+<input type='text' value={singletodo} onChange={singletodoFunc}/>
 <button onClick={submitAlltodoFunc}>Submit</button>
 </div>
 
-
 {
   all2do.map((val)=>(
-<div key={val.id}>
+<div>
 <p>{val.id}</p>
 <p>{val.text}</p>
 <button onClick={()=>deleteFunc(val.id)}>Delete</button>
 </div>
+
   ))
+  
 }
-
-
-
 </>
-
-  )
+)
+  
 }
 
 export default Test
